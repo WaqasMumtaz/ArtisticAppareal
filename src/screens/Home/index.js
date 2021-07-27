@@ -5,14 +5,18 @@ import Logo from '../../Components/Logo';
 import {View , Text , Image , StyleSheet} from 'react-native';
 import MyButton from '../../Components/Button';
 import globelColors from '../../Globel';
+import { useNavigation } from '@react-navigation/native';
 
 const Home =()=>{
+    const navigation = useNavigation();
 
      const addForm = ()=>{
-         console.log('Add form')
+        navigation.navigate('Form');
+       //  console.log('Add form')
      }
 
      const viewDetail = ()=>{
+        
          console.log('view details')
      }
     return(

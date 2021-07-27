@@ -4,6 +4,8 @@ import { createStackNavigator } from '@react-navigation/stack';
  import Login from '../screens/Auth/Login';
  import Signup from '../screens/Auth/Signup';
 import Home from '../screens/Home';
+import AddForm from '../screens/Form';
+
 const Stack = createStackNavigator();
 const Main=()=>{
     return (
@@ -13,7 +15,9 @@ const Main=()=>{
             <Stack.Screen name="Home" component={Home}
             options={{headerShown: false}}
             />
-
+             <Stack.Screen name="Form" component={AddForm}
+            options={{headerShown: false}}
+            />
           </Stack.Navigator>
       );
 }

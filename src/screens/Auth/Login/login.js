@@ -45,6 +45,7 @@ const Login = props => {
   const handleSubmitPress = async () => {
     //  props.navigation.navigate('Home')
     // setErrortext('');
+    AsyncStorage.clear()
     if (!userEmail || !userPassword) {
       alert('Please fill all fields');
       return;
@@ -58,7 +59,7 @@ const Login = props => {
       return;
     }
     else {
-      navigate('Signup')
+      navigate('Home')
     }
     // try {
     //   setLoading(true)

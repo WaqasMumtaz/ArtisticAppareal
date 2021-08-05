@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
  import Signup from '../screens/Auth/Signup';
 import Home from '../screens/Home';
 import AddForm from '../screens/Form';
+import Detail_Page from '../screens/Detail';
 
 const Stack = createStackNavigator();
 const Main=()=>{
@@ -16,7 +17,10 @@ const Main=()=>{
             options={{headerShown: false}}
             />
              <Stack.Screen name="Form" component={AddForm}
-            options={{headerShown: false}}
+             // options={{headerShown: false}}
+            />
+             <Stack.Screen name="Detail" component={Detail_Page}
+             // options={{headerShown: false}}
             />
           </Stack.Navigator>
       );

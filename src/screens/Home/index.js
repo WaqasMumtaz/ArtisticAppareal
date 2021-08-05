@@ -16,8 +16,7 @@ const Home =()=>{
      }
 
      const viewDetail = ()=>{
-        
-         console.log('view details')
+        navigation.navigate('Detail');
      }
     return(
         <View style={styles.main}>

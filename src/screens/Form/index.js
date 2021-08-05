@@ -6,10 +6,21 @@ import { TouchableOpacity } from 'react-native';
 import ActionSheet from 'react-native-actionsheet';
 import ImagePicker from 'react-native-image-crop-picker';
 import ImageModal from 'react-native-image-modal';
+import MyButton from '../../Components/Button';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const AddForm = ()=>{
   let actionSheet = useRef();
   let [selectedIMGS, setSelectedIMGS] = useState([]);
+  let [supplier , setSupplier]= useState('');
+  let [factoryName , setFactoryName]= useState('');
+  let [location , setLocation]= useState('');
+  let [style1 , setStyle1]= useState('');
+  let [description , setDescription]= useState('');
+  let [pmName , setPMname]= useState('');
+  let [buying , setBuying]= useState('');
+  let [country , setCountry]= useState('');
+  const [count, setCount] = useState(0);
  
   let optionArray = [
     'Select Multiple Images',
@@ -29,17 +40,33 @@ const AddForm = ()=>{
       setSelectedIMGS(imgs);
       close();
     console.log('index >>>>', index);
-    // if (index !== -1) {
-    
-    // }
-    // console.log('Remove Photo')
-    // Alert.alert('Delete Photo', 'Are you sure to remove ?', [
-    //     {
-    //       text: 'Ok',
-    //       onPress: () => setImage(''),
-    //     },
-    //     {text: 'Cancel', onPress: () => console.log('Cancel')},
-    //   ]);
+}
+
+const submit_form = ()=>{
+  console.log('Submit form');
+  setCount(count + 1)
+  if(!supplier && !factoryName && !location && !style1 && !description && !pmName && !buying && !country){
+    alert('Required form fields');
+  }
+  else {
+    let formTotal_Data = [...selectedIMGS];
+    let form_obj = {
+      // key: count,
+      // selectedIMGS:selectedIMGS,
+      supplier:supplier,
+      factoryName:factoryName,
+      location:location,
+      style1:style1,
+      description:description,
+      pmName:pmName,
+      buying:buying,
+      country:country,
+    }
+    formTotal_Data.push(form_obj);
+    AsyncStorage.setItem('selectedIMGS',JSON.stringify(selectedIMGS));
+    AsyncStorage.setItem('formDetail',JSON.stringify(form_obj));
+    alert('Form Submit Successfully')
+  }
 }
 
   const Item = ({ item }) => (
@@ -136,27 +163,41 @@ return(
         <ScrollView>
         <Input
   placeholder='Supplier Name '
+  onChangeText={value => setSupplier(value)}
 />
 <Input
   placeholder='Factory Name'
+  onChangeText={value => setFactoryName(value)}
 />
 <Input
   placeholder='Location'
+  onChangeText={value => setLocation(value)}
+
 />
 <Input
   placeholder='Style'
+  onChangeText={value => setStyle1(value)}
+
 />
 <Input
   placeholder='Item Description'
+  onChangeText={value => setDescription(value)}
+
 />
 <Input
   placeholder='PR / PM Name'
+  onChangeText={value => setPMname(value)}
+
 />
 <Input
   placeholder='Buying B/D'
+  onChangeText={value => setBuying(value)}
+
 />
 <Input
   placeholder='Country of Origin'
+  onChangeText={value => setCountry(value)}
+
 />
 <View style={{marginVertical:20 ,justifyContent:'center', alignItems:'center'}}>
 <TouchableOpacity onPress={()=> openSheet()}>
@@ -180,6 +221,13 @@ renderItem={renderItem}
 keyExtractor={item => item.key}
  />
 }
+<MyButton
+onSubmit={submit_form}
+btnStyle ={styles.btnStyle}
+titleStyle ={styles.titleStyle}
+title = 'Submit'
+btnContainer={styles.btnContainer}
+/>
 </ScrollView>
     </View>
 )
@@ -197,5 +245,24 @@ const styles = StyleSheet.create({
       color:'gray',
       fontSize:16,
       fontWeight:'bold'
+    },
+    btnStyle:{
+      backgroundColor: '#808080',
+      borderWidth: 0,
+      color: '#FFF',
+      borderColor: '#808080',
+      height: 40,
+      alignItems: 'center',
+      justifyContent:'center',
+      borderRadius: 30,
+      marginLeft: 35,
+      marginRight: 35,
+      marginTop: 20,
+      marginBottom: 20,
+    },
+    titleStyle:{
+      fontSize:20,
+      color:'white',
+      fontWeight:'bold',
     }
 })

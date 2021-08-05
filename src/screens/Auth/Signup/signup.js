@@ -50,9 +50,9 @@ const Signup = props => {
   const phone = useRef(null);
 
   const handleSubmitButton = async () => {
-    setErrortext('');
-    navigate('Home');
-    return;
+  //  setErrortext('');
+  //  navigate('Home');
+   // return;
     if (!userName) {
       alert('Please fill Name');
       return;
@@ -81,6 +81,8 @@ const Signup = props => {
       alert('Please enter required password length');
       return;
     }
+    setIsRegistraionSuccess(true);
+    //alert('Successfully Register')
     // try {
 
     //   //Show Loader

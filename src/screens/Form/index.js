@@ -21,6 +21,11 @@ const AddForm = ()=>{
   let [buying , setBuying]= useState('');
   let [country , setCountry]= useState('');
   const [count, setCount] = useState(0);
+  let [PO , setPO] = useState(0);
+  let [color , setColor] = useState('');
+  let [orderQ , setOrderQ] = useState(0);
+  let [shipQ , setShipQ] = useState(0);
+
  
   let optionArray = [
     'Select Multiple Images',
@@ -61,6 +66,10 @@ const submit_form = ()=>{
       pmName:pmName,
       buying:buying,
       country:country,
+      PO:PO,
+      Color:Color,
+      orderQ:orderQ,
+      shipQ:shipQ
     }
     formTotal_Data.push(form_obj);
     AsyncStorage.setItem('selectedIMGS',JSON.stringify(selectedIMGS));
@@ -161,6 +170,9 @@ const submit_form = ()=>{
 return(
     <View style={styles.mainContainer}>
         <ScrollView>
+        <View style={{marginVertical:10}}>
+          <Text>Inspection Center Details and Information</Text>
+        </View>
         <Input
   placeholder='Supplier Name '
   onChangeText={value => setSupplier(value)}
@@ -198,6 +210,25 @@ return(
   placeholder='Country of Origin'
   onChangeText={value => setCountry(value)}
 
+/>
+<View style={{marginVertical:10}}>
+          <Text>QCC1 Report</Text>
+</View>
+<Input
+  placeholder='PO #'
+  onChangeText={value => setPO(value)}
+/>
+<Input
+  placeholder='Color'
+  onChangeText={value => setColor(value)}
+/>
+<Input
+  placeholder='Order Quantity'
+  onChangeText={value => setOrderQ(value)}
+/>
+<Input
+  placeholder='Ship Quantity'
+  onChangeText={value => setShipQ(value)}
 />
 <View style={{marginVertical:20 ,justifyContent:'center', alignItems:'center'}}>
 <TouchableOpacity onPress={()=> openSheet()}>

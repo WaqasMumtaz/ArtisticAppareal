@@ -8,8 +8,11 @@ import ImagePicker from 'react-native-image-crop-picker';
 import ImageModal from 'react-native-image-modal';
 import MyButton from '../../Components/Button';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import moment from 'moment';
+import DatePicker from '../../Components/DateTime';
+import DropDown from '../../Components/DropDown';
 
-const AddForm = ()=>{
+const AddForm = ()=>{ 
   let actionSheet = useRef();
   let [selectedIMGS, setSelectedIMGS] = useState([]);
   let [supplier , setSupplier]= useState('');
@@ -25,6 +28,37 @@ const AddForm = ()=>{
   let [color , setColor] = useState('');
   let [orderQ , setOrderQ] = useState(0);
   let [shipQ , setShipQ] = useState(0);
+  let [formValue , setFormValue] = useState({
+    start_date: new Date(),
+    start_time:'',
+    finish_time:'',
+    inspector_value:[]
+  });
+  let [picker , setPicker] = useState(false);
+  const pressPicker = ()=>setPicker(picker => !picker);
+  let [inspectorValue , setInspectorValue] = useState([]);
+  let [inspectors , setInspectors] = useState([
+    {
+      label:'Allen',
+      value:'allen'
+    },
+    {
+      label:'Naveed',
+      value:'naveed'
+    },
+    {
+      label:'Sheraz',
+      value:'sheraz'
+    },
+    {
+      label:'Mujtaba',
+      value:'mujtaba'
+    },
+    {
+      label:'Zubair',
+      value:'Zubair'
+    },
+  ])
 
  
   let optionArray = [
@@ -69,12 +103,26 @@ const submit_form = ()=>{
       PO:PO,
       Color:Color,
       orderQ:orderQ,
-      shipQ:shipQ
+      shipQ:shipQ,
     }
     formTotal_Data.push(form_obj);
     AsyncStorage.setItem('selectedIMGS',JSON.stringify(selectedIMGS));
     AsyncStorage.setItem('formDetail',JSON.stringify(form_obj));
     alert('Form Submit Successfully')
+  }
+}
+
+function handleChange(name, value) {
+  // console.log('Name >>>>' , name,'Value >>>>>>', value);
+  if(name === 'inpector_value'){
+    console.log('ins ************', value);
+    //setInspectorValue()
+  }
+  else {
+    setFormValue({
+      ...formValue,
+      [name]: value,
+    });
   }
 }
 
@@ -118,6 +166,13 @@ const submit_form = ()=>{
   const openSheet=()=>{
     actionSheet.current.show();
   }
+
+ const valueSet=(item)=>{
+   console.log('Items >>>>>>>>>', item);
+ }
+ const openPicker = ()=>{
+   setPicker(true)
+ }
   
 
   const selectMultipleImgs = async (index , myCallBack) => {
@@ -170,8 +225,79 @@ const submit_form = ()=>{
 return(
     <View style={styles.mainContainer}>
         <ScrollView>
-        <View style={{marginVertical:10}}>
-          <Text>Inspection Center Details and Information</Text>
+        <View style={{marginVertical:10 , marginHorizontal:10}}>
+          <Text style={{fontWeight:'bold', fontSize:16}}>QCC1 Report</Text>
+</View>
+ <View>
+   <DatePicker
+      getDateType={'date'}
+      name={'Select Date'}
+      onChange={(e) => handleChange('start_date', e)}
+   />
+   <Text style={{ textAlign: 'center' }}>
+        {moment(formValue.start_date.toString()).format('MMM D yyyy')}
+   </Text>
+ </View>
+ <View style={{flexDirection:'row', justifyContent:'space-evenly', marginVertical:12}}>
+      <View >
+      <DatePicker
+      getDateType={'time'}
+      name={'Start Time'}
+      onChange={(e) => handleChange('start_time', e)}
+      />
+      {formValue.start_time !== '' && (
+      <Text style={{ textAlign: 'center' }}>
+        {moment(formValue.start_time).format('hh:mm A')}
+       </Text>
+        )}
+       
+      </View>
+     
+      <View>
+      <DatePicker
+      getDateType={'time'}
+      name={'Finish Time'}
+      onChange={(e) => handleChange('finish_time', e)}
+      />
+        {formValue.finish_time !== '' && (
+       <Text style={{ textAlign: 'center' }}>
+        {moment(formValue.finish_time).format('hh:mm A')}
+       </Text>
+        )}
+      </View>
+ </View>
+ <View style={{marginVertical:7 , marginHorizontal:15,}}>
+    <DropDown
+     placeholder="Select Inspectors"
+     list={inspectors}
+     onChange={(value) => handleChange('inpector_value',value)}
+     value={inspectorValue}
+     searchable={true}
+     dropDownMaxHeight={150}
+     multiple={true}
+     open={picker}
+     onPress={pressPicker}
+     valueSet={valueSet}
+    />
+ </View>
+<Input
+  placeholder='PO #'
+  onChangeText={value => setPO(value)}
+/>
+<Input
+  placeholder='Color'
+  onChangeText={value => setColor(value)}
+/>
+<Input
+  placeholder='Order Quantity'
+  onChangeText={value => setOrderQ(value)}
+/>
+<Input
+  placeholder='Ship Quantity'
+  onChangeText={value => setShipQ(value)}
+/>
+        <View style={{marginVertical:10, marginHorizontal:10}}>
+          <Text style={{fontWeight:'bold', fontSize:16}}>Inspection Center Details and Information</Text>
         </View>
         <Input
   placeholder='Supplier Name '
@@ -211,25 +337,11 @@ return(
   onChangeText={value => setCountry(value)}
 
 />
-<View style={{marginVertical:10}}>
-          <Text>QCC1 Report</Text>
-</View>
-<Input
-  placeholder='PO #'
-  onChangeText={value => setPO(value)}
-/>
-<Input
-  placeholder='Color'
-  onChangeText={value => setColor(value)}
-/>
-<Input
-  placeholder='Order Quantity'
-  onChangeText={value => setOrderQ(value)}
-/>
-<Input
-  placeholder='Ship Quantity'
-  onChangeText={value => setShipQ(value)}
-/>
+
+{/* <View style={{marginVertical:10 , marginHorizontal:10}}>
+          <Text style={{fontWeight:'bold', fontSize:16}}></Text>
+</View> */}
+
 <View style={{marginVertical:20 ,justifyContent:'center', alignItems:'center'}}>
 <TouchableOpacity onPress={()=> openSheet()}>
   <Text style={styles.text}>Select Image</Text>

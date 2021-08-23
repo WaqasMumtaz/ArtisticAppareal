@@ -20,7 +20,7 @@ export default function DropDown({
   zIndex,dropDownMaxHeight
 }) {
    
-  console.log('multiple of dropdown ******---------------------->>>>>>>>>', list);
+  // console.log('multiple of dropdown ******---------------------->>>>>>>>>', list);
   
   return (
     <View
@@ -43,10 +43,8 @@ export default function DropDown({
         max={5}
         multipleText={multipleText}
         dropDownMaxHeight={150}
-        setValue={valueSet}
-        onChangeItem={(item) => 
-           console.log('********** item >>', item)
-          }
+       setValue={valueSet}
+       // onChangeValue={(item)=>console.log('item current', item)}
        // disabled={disabled}
         // searchable={searchable === true}
         multiple={multiple}

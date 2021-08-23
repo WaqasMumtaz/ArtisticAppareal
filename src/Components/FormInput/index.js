@@ -1,7 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
-import {Input} from 'react-native-elements';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, View , TextInput} from 'react-native';
 import Ionicons from 'react-native-vector-icons/FontAwesome';
 const FormInput = ({
   iconName,
@@ -11,18 +10,21 @@ const FormInput = ({
   name,
   placeholder,
   value,
+  style,
+  maxLength,
   ...rest
 }) => (
   <View style={styles.inputContainer}>
-    <Input
-      {...rest}
-      leftIcon={<Ionicons name={iconName} size={28} color={iconColor} />}
-      leftIconContainerStyle={styles.iconStyle}
+    <TextInput
+      // leftIcon={<Ionicons name={iconName} size={28} color={iconColor} />}
+      // leftIconContainerStyle={styles.iconStyle}
       placeholderTextColor="grey"
       name={name}
       value={value}
       placeholder={placeholder}
-      style={styles.input}
+      style={style}
+      keyboardType={keyboardType}
+      maxLength={maxLength}
     />
   </View>
 );
@@ -34,6 +36,7 @@ const styles = StyleSheet.create({
   iconStyle: {
     marginRight: 10,
   },
+  
 });
 
 export default FormInput;

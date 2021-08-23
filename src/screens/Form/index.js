@@ -1,7 +1,7 @@
 import React, {useState , useEffect, useRef} from 'react';
 import {View ,Image,Alert, TextInput , StyleSheet , Text , ScrollView , FlatList} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { Input } from 'react-native-elements';
+import { Input , Divider} from 'react-native-elements';
 import { TouchableOpacity } from 'react-native';
 import ActionSheet from 'react-native-actionsheet';
 import ImagePicker from 'react-native-image-crop-picker';
@@ -11,6 +11,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import moment from 'moment';
 import DatePicker from '../../Components/DateTime';
 import DropDown from '../../Components/DropDown';
+import FormInput from '../../Components/FormInput';
 
 const AddForm = ()=>{ 
   let actionSheet = useRef();
@@ -39,22 +40,27 @@ const AddForm = ()=>{
   let [inspectorValue , setInspectorValue] = useState([]);
   let [inspectors , setInspectors] = useState([
     {
+      id:0,
       label:'Allen',
       value:'allen'
     },
     {
+      id:1,
       label:'Naveed',
       value:'naveed'
     },
     {
+      id:2,
       label:'Sheraz',
       value:'sheraz'
     },
     {
+      id:3,
       label:'Mujtaba',
       value:'mujtaba'
     },
     {
+      id:4,
       label:'Zubair',
       value:'Zubair'
     },
@@ -167,8 +173,9 @@ function handleChange(name, value) {
     actionSheet.current.show();
   }
 
- const valueSet=(item)=>{
-   console.log('Items >>>>>>>>>', item);
+ function valueSet(callback){
+   //console.log('Items >>>>>>>>>', callback);
+   setInspectorValue(item => callback(item))
  }
  const openPicker = ()=>{
    setPicker(true)
@@ -338,9 +345,262 @@ return(
 
 />
 
-{/* <View style={{marginVertical:10 , marginHorizontal:10}}>
-          <Text style={{fontWeight:'bold', fontSize:16}}></Text>
-</View> */}
+<View style={{marginVertical:10, marginHorizontal:10}}>
+          <Text style={{fontWeight:'bold', fontSize:16}}>Tools for Inspection</Text>
+</View>
+<View style={{marginLeft:12 , alignItems:'center'}}>
+<View style={{flexDirection:'row', alignItems:'center', }}>
+  <Text>first check item</Text>
+  <View style={{alignItems:'center'}}>
+    <Text>X-1</Text>
+  <FormInput
+   value={''}
+   name={'First'}
+   placeholder={'First'}
+   style={styles.input}
+   keyboardType="numeric"
+   maxLength={3}
+  />
+  </View>
+  <View style={{alignItems:'center'}}>
+  <Text>X-1</Text>
+  <FormInput
+   value={''}
+   name={'First'}
+   placeholder={'First'}
+   style={styles.input}
+   keyboardType="numeric"
+   maxLength={3}
+  />
+  </View>
+  <View style={{alignItems:'center'}}>
+  <Text>X-1</Text>
+  <FormInput
+   value={''}
+   name={'First'}
+   placeholder={'First'}
+   style={styles.input}
+   keyboardType="numeric"
+   maxLength={3}
+  />
+  </View>
+</View>
+</View>
+<View style={{marginLeft:12 , alignItems:'center'}}>
+<View style={{flexDirection:'row', alignItems:'center', }}>
+  <Text>first check item</Text>
+  <View style={{alignItems:'center'}}>
+  <FormInput
+   value={'45'}
+   name={'First'}
+   placeholder={'First'}
+   style={styles.input}
+   keyboardType="numeric"
+   maxLength={3}
+  />
+  </View>
+  <View style={{alignItems:'center'}}>
+  <FormInput
+   value={''}
+   name={'First'}
+   placeholder={'First'}
+   style={styles.input}
+   keyboardType="numeric"
+   maxLength={3}
+  />
+  </View>
+  <View style={{alignItems:'center'}}>
+  <FormInput
+   value={''}
+   name={'First'}
+   placeholder={'First'}
+   style={styles.input}
+   keyboardType="numeric"
+   maxLength={3}
+  />
+  </View>
+</View>
+</View>
+<View style={{marginLeft:12 , alignItems:'center'}}>
+<View style={{flexDirection:'row', alignItems:'center', }}>
+  <Text>first check item</Text>
+  <View style={{alignItems:'center'}}>
+  <FormInput
+   value={'45'}
+   name={'First'}
+   placeholder={'First'}
+   style={styles.input}
+   keyboardType="numeric"
+   maxLength={3}
+  />
+  </View>
+  <View style={{alignItems:'center'}}>
+  <FormInput
+   value={''}
+   name={'First'}
+   placeholder={'First'}
+   style={styles.input}
+   keyboardType="numeric"
+   maxLength={3}
+  />
+  </View>
+  <View style={{alignItems:'center'}}>
+  <FormInput
+   value={''}
+   name={'First'}
+   placeholder={'First'}
+   style={styles.input}
+   keyboardType="numeric"
+   maxLength={3}
+  />
+  </View>
+</View>
+</View>
+<View style={{marginLeft:12 , alignItems:'center'}}>
+<View style={{flexDirection:'row', alignItems:'center', }}>
+  <Text>first check item</Text>
+  <View style={{alignItems:'center'}}>
+  <FormInput
+   value={'45'}
+   name={'First'}
+   placeholder={'First'}
+   style={styles.input}
+   keyboardType="numeric"
+   maxLength={3}
+  />
+  </View>
+  <View style={{alignItems:'center'}}>
+  <FormInput
+   value={''}
+   name={'First'}
+   placeholder={'First'}
+   style={styles.input}
+   keyboardType="numeric"
+   maxLength={3}
+  />
+  </View>
+  <View style={{alignItems:'center'}}>
+  <FormInput
+   value={''}
+   name={'First'}
+   placeholder={'First'}
+   style={styles.input}
+   keyboardType="numeric"
+   maxLength={3}
+  />
+  </View>
+</View>
+</View>
+<View style={{marginLeft:12 , alignItems:'center'}}>
+<View style={{flexDirection:'row', alignItems:'center', }}>
+  <Text>first check item</Text>
+  <View style={{alignItems:'center'}}>
+  <FormInput
+   value={'45'}
+   name={'First'}
+   placeholder={'First'}
+   style={styles.input}
+   keyboardType="numeric"
+   maxLength={3}
+  />
+  </View>
+  <View style={{alignItems:'center'}}>
+  <FormInput
+   value={''}
+   name={'First'}
+   placeholder={'First'}
+   style={styles.input}
+   keyboardType="numeric"
+   maxLength={3}
+  />
+  </View>
+  <View style={{alignItems:'center'}}>
+  <FormInput
+   value={''}
+   name={'First'}
+   placeholder={'First'}
+   style={styles.input}
+   keyboardType="numeric"
+   maxLength={3}
+  />
+  </View>
+</View>
+</View>
+<View style={{marginLeft:12 , alignItems:'center'}}>
+<View style={{flexDirection:'row', alignItems:'center', }}>
+  <Text>first check item</Text>
+  <View style={{alignItems:'center'}}>
+  <FormInput
+   value={'45'}
+   name={'First'}
+   placeholder={'First'}
+   style={styles.input}
+   keyboardType="numeric"
+   maxLength={3}
+  />
+  </View>
+  <View style={{alignItems:'center'}}>
+  <FormInput
+   value={''}
+   name={'First'}
+   placeholder={'First'}
+   style={styles.input}
+   keyboardType="numeric"
+   maxLength={3}
+  />
+  </View>
+  <View style={{alignItems:'center'}}>
+  <FormInput
+   value={''}
+   name={'First'}
+   placeholder={'First'}
+   style={styles.input}
+   keyboardType="numeric"
+   maxLength={3}
+  />
+  </View>
+</View>
+</View>
+<View style={{marginLeft:12 , alignItems:'center'}}>
+<View style={{flexDirection:'row', alignItems:'center', }}>
+  <Text>first check item</Text>
+  <View style={{alignItems:'center'}}>
+  <FormInput
+   value={'45'}
+   name={'First'}
+   placeholder={'First'}
+   style={styles.input}
+   keyboardType="numeric"
+   maxLength={3}
+  />
+  </View>
+  <View style={{alignItems:'center'}}>
+  <FormInput
+   value={''}
+   name={'First'}
+   placeholder={'First'}
+   style={styles.input}
+   keyboardType="numeric"
+   maxLength={3}
+  />
+  </View>
+  <View style={{alignItems:'center'}}>
+  <FormInput
+   value={''}
+   name={'First'}
+   placeholder={'First'}
+   style={styles.input}
+   keyboardType="numeric"
+   maxLength={3}
+  />
+  </View>
+</View>
+</View>
+
+{/* <Divider 
+  orientation="horizontal" 
+  style={{borderBottomWidth: 1, borderBottomColor: 'gray',}}
+ /> */}
 
 <View style={{marginVertical:20 ,justifyContent:'center', alignItems:'center'}}>
 <TouchableOpacity onPress={()=> openSheet()}>
@@ -407,5 +667,13 @@ const styles = StyleSheet.create({
       fontSize:20,
       color:'white',
       fontWeight:'bold',
-    }
+    },
+    input:{
+      height:40,
+      paddingHorizontal:13,
+      borderColor:'gray',
+      borderWidth:1,
+      alignItems:'center'
+    },
+  
 })

@@ -12,6 +12,7 @@ import moment from 'moment';
 import DatePicker from '../../Components/DateTime';
 import DropDown from '../../Components/DropDown';
 import FormInput from '../../Components/FormInput';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 const AddForm = ()=>{ 
   let actionSheet = useRef();
@@ -107,7 +108,7 @@ const submit_form = ()=>{
       buying:buying,
       country:country,
       PO:PO,
-      Color:Color,
+      Color:color,
       orderQ:orderQ,
       shipQ:shipQ,
     }
@@ -348,47 +349,290 @@ return(
 <View style={{marginVertical:10, marginHorizontal:10}}>
           <Text style={{fontWeight:'bold', fontSize:16}}>Tools for Inspection</Text>
 </View>
-<View style={{marginLeft:12 , alignItems:'center'}}>
-<View style={{flexDirection:'row', alignItems:'center', }}>
-  <Text>first check item</Text>
-  <View style={{alignItems:'center'}}>
-    <Text>X-1</Text>
+<View style={{marginHorizontal:12, }}>
+<View style={{flexDirection:'row',alignItems:'center', justifyContent:'space-between'}}>
+<View><Text>Copy of Order</Text></View>
+<View style={{flexDirection:'row'}}>
+<View style={{alignItems:'center'}}>
+    <Text>Pass</Text>
   <FormInput
    value={''}
    name={'First'}
    placeholder={'First'}
-   style={styles.input}
+   style={styles.inputTools}
    keyboardType="numeric"
    maxLength={3}
   />
   </View>
   <View style={{alignItems:'center'}}>
-  <Text>X-1</Text>
+    <Text>Fail</Text>
   <FormInput
    value={''}
    name={'First'}
    placeholder={'First'}
-   style={styles.input}
+   style={styles.inputTools}
    keyboardType="numeric"
    maxLength={3}
   />
   </View>
   <View style={{alignItems:'center'}}>
-  <Text>X-1</Text>
+    <Text>Pending</Text>
   <FormInput
    value={''}
    name={'First'}
    placeholder={'First'}
-   style={styles.input}
+   style={styles.inputTools}
+   keyboardType="numeric"
+   maxLength={3}
+  />
+  </View>
+  <View style={{alignItems:'center'}}>
+    <Text>N/A</Text>
+  <FormInput
+   value={''}
+   name={'First'}
+   placeholder={'First'}
+   style={styles.inputTools}
    keyboardType="numeric"
    maxLength={3}
   />
   </View>
 </View>
+  </View>
+  
+  <View style={{flexDirection:'row',alignItems:'center', justifyContent:'space-between'}}>
+<View><Text>Approved {"\n"}Sample</Text></View>
+<View style={{flexDirection:'row'}}>
+<View style={{alignItems:'center'}}>
+  <FormInput
+   value={''}
+   name={'First'}
+   placeholder={'First'}
+   style={styles.inputTools}
+   keyboardType="numeric"
+   maxLength={3}
+  />
+  </View>
+  <View style={{alignItems:'center'}}>
+  <FormInput
+   value={''}
+   name={'First'}
+   placeholder={'First'}
+   style={styles.inputTools}
+   keyboardType="numeric"
+   maxLength={3}
+  />
+  </View>
+  <View style={{alignItems:'center'}}>
+  <FormInput
+   value={''}
+   name={'First'}
+   placeholder={'First'}
+   style={styles.inputTools}
+   keyboardType="numeric"
+   maxLength={3}
+  />
+  </View>
+  <View style={{alignItems:'center'}}>
+    
+  <FormInput
+   value={''}
+   name={'First'}
+   placeholder={'First'}
+   style={styles.inputTools}
+   keyboardType="numeric"
+   maxLength={3}
+  />
+  </View>
 </View>
-<View style={{marginLeft:12 , alignItems:'center'}}>
-<View style={{flexDirection:'row', alignItems:'center', }}>
-  <Text>first check item</Text>
+  </View>
+  <View style={{flexDirection:'row',alignItems:'center', justifyContent:'space-between'}}>
+<View><Text>F & A Card</Text></View>
+<View style={{flexDirection:'row'}}>
+<View style={{alignItems:'center'}}>
+  <FormInput
+   value={''}
+   name={'First'}
+   placeholder={'First'}
+   style={styles.inputTools}
+   keyboardType="numeric"
+   maxLength={3}
+  />
+  </View>
+  <View style={{alignItems:'center'}}>
+  <FormInput
+   value={''}
+   name={'First'}
+   placeholder={'First'}
+   style={styles.inputTools}
+   keyboardType="numeric"
+   maxLength={3}
+  />
+  </View>
+  <View style={{alignItems:'center'}}>
+  <FormInput
+   value={''}
+   name={'First'}
+   placeholder={'First'}
+   style={styles.inputTools}
+   keyboardType="numeric"
+   maxLength={3}
+  />
+  </View>
+  <View style={{alignItems:'center'}}>
+  <FormInput
+   value={''}
+   name={'First'}
+   placeholder={'First'}
+   style={styles.inputTools}
+   keyboardType="numeric"
+   maxLength={3}
+  />
+  </View>
+</View>
+  </View>
+  <View style={{flexDirection:'row',alignItems:'center', justifyContent:'space-between'}}>
+<View><Text>Slide {"\n"}Specifications</Text></View>
+<View style={{flexDirection:'row'}}>
+<View style={{alignItems:'center'}}>
+  <FormInput
+   value={''}
+   name={'First'}
+   placeholder={'First'}
+   style={styles.inputTools}
+   keyboardType="numeric"
+   maxLength={3}
+  />
+  </View>
+  <View style={{alignItems:'center'}}>
+  <FormInput
+   value={''}
+   name={'First'}
+   placeholder={'First'}
+   style={styles.inputTools}
+   keyboardType="numeric"
+   maxLength={3}
+  />
+  </View>
+  <View style={{alignItems:'center'}}>
+
+  <FormInput
+   value={''}
+   name={'First'}
+   placeholder={'First'}
+   style={styles.inputTools}
+   keyboardType="numeric"
+   maxLength={3}
+  />
+  </View>
+  <View style={{alignItems:'center'}}>
+  <FormInput
+   value={''}
+   name={'First'}
+   placeholder={'First'}
+   style={styles.inputTools}
+   keyboardType="numeric"
+   maxLength={3}
+  />
+  </View>
+</View>
+  </View>
+  <View style={{flexDirection:'row',alignItems:'center', justifyContent:'space-between'}}>
+<View><Text>Garment {"\n"}Wash Result</Text></View>
+<View style={{flexDirection:'row'}}>
+<View style={{alignItems:'center'}}>
+  <FormInput
+   value={''}
+   name={'First'}
+   placeholder={'First'}
+   style={styles.inputTools}
+   keyboardType="numeric"
+   maxLength={3}
+  />
+  </View>
+  <View style={{alignItems:'center'}}>
+  <FormInput
+   value={''}
+   name={'First'}
+   placeholder={'First'}
+   style={styles.inputTools}
+   keyboardType="numeric"
+   maxLength={3}
+  />
+  </View>
+  <View style={{alignItems:'center'}}>
+
+  <FormInput
+   value={''}
+   name={'First'}
+   placeholder={'First'}
+   style={styles.inputTools}
+   keyboardType="numeric"
+   maxLength={3}
+  />
+  </View>
+  <View style={{alignItems:'center'}}>
+  <FormInput
+   value={''}
+   name={'First'}
+   placeholder={'First'}
+   style={styles.inputTools}
+   keyboardType="numeric"
+   maxLength={3}
+  />
+  </View>
+</View>
+  </View>
+
+</View>
+<View style={{marginVertical:10, marginHorizontal:10}}>
+          <Text style={{fontWeight:'bold', fontSize:16}}>Workmanship Description</Text>
+</View>
+<View style={{marginHorizontal:12, }}>
+  <View style={{flexDirection:'row', width:'80%', justifyContent:'flex-end',marginVertical:8}}>
+    <Text style={{fontWeight:'bold'}}>Defects Points</Text>
+  </View>
+<View style={{flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
+  <View><Text>Broken Stitch</Text></View>
+  <View style={{flexDirection:'row'}}>
+  <View style={{alignItems:'center'}}>
+    <Text>Critical</Text>
+  <FormInput
+   value={''}
+   name={'First'}
+   placeholder={'First'}
+   style={styles.input}
+   keyboardType="numeric"
+   maxLength={3}
+  />
+  </View>
+  <View style={{alignItems:'center'}}>
+  <Text>Major</Text>
+  <FormInput
+   value={''}
+   name={'First'}
+   placeholder={'First'}
+   style={styles.input}
+   keyboardType="numeric"
+   maxLength={3}
+  />
+  </View>
+  <View style={{alignItems:'center'}}>
+  <Text>Minor</Text>
+  <FormInput
+   value={''}
+   name={'First'}
+   placeholder={'First'}
+   style={styles.input}
+   keyboardType="numeric"
+   maxLength={3}
+  />
+  </View>
+  </View>
+  </View>
+  <View style={{flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
+  <View><Text>Insecure Loop</Text></View>
+  <View style={{flexDirection:'row'}}>
   <View style={{alignItems:'center'}}>
   <FormInput
    value={'45'}
@@ -419,11 +663,11 @@ return(
    maxLength={3}
   />
   </View>
+  </View>
 </View>
-</View>
-<View style={{marginLeft:12 , alignItems:'center'}}>
-<View style={{flexDirection:'row', alignItems:'center', }}>
-  <Text>first check item</Text>
+<View style={{flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
+  <View><Text>Insecure Label</Text></View>
+  <View style={{flexDirection:'row'}}>
   <View style={{alignItems:'center'}}>
   <FormInput
    value={'45'}
@@ -454,11 +698,11 @@ return(
    maxLength={3}
   />
   </View>
+  </View>
 </View>
-</View>
-<View style={{marginLeft:12 , alignItems:'center'}}>
-<View style={{flexDirection:'row', alignItems:'center', }}>
-  <Text>first check item</Text>
+<View style={{flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
+  <View><Text>Dirt Stain</Text></View>
+  <View style={{flexDirection:'row'}}>
   <View style={{alignItems:'center'}}>
   <FormInput
    value={'45'}
@@ -489,11 +733,11 @@ return(
    maxLength={3}
   />
   </View>
+  </View>
 </View>
-</View>
-<View style={{marginLeft:12 , alignItems:'center'}}>
-<View style={{flexDirection:'row', alignItems:'center', }}>
-  <Text>first check item</Text>
+<View style={{flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
+  <View><Text>Oil Stain</Text></View>
+  <View style={{flexDirection:'row'}}>
   <View style={{alignItems:'center'}}>
   <FormInput
    value={'45'}
@@ -524,11 +768,11 @@ return(
    maxLength={3}
   />
   </View>
+  </View>
 </View>
-</View>
-<View style={{marginLeft:12 , alignItems:'center'}}>
-<View style={{flexDirection:'row', alignItems:'center', }}>
-  <Text>first check item</Text>
+<View style={{flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
+  <View><Text>Numbering Visible</Text></View>
+  <View style={{flexDirection:'row'}}>
   <View style={{alignItems:'center'}}>
   <FormInput
    value={'45'}
@@ -559,11 +803,12 @@ return(
    maxLength={3}
   />
   </View>
+  </View>
+  
 </View>
-</View>
-<View style={{marginLeft:12 , alignItems:'center'}}>
-<View style={{flexDirection:'row', alignItems:'center', }}>
-  <Text>first check item</Text>
+<View style={{flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
+  <View><Text>Pleat</Text></View>
+  <View style={{flexDirection:'row'}}>
   <View style={{alignItems:'center'}}>
   <FormInput
    value={'45'}
@@ -594,8 +839,83 @@ return(
    maxLength={3}
   />
   </View>
+  </View>
+  
+</View>
+<View style={{flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
+  <View><Text>Washing mark</Text></View>
+  <View style={{flexDirection:'row'}}>
+  <View style={{alignItems:'center'}}>
+  <FormInput
+   value={'45'}
+   name={'First'}
+   placeholder={'First'}
+   style={styles.input}
+   keyboardType="numeric"
+   maxLength={3}
+  />
+  </View>
+  <View style={{alignItems:'center'}}>
+  <FormInput
+   value={''}
+   name={'First'}
+   placeholder={'First'}
+   style={styles.input}
+   keyboardType="numeric"
+   maxLength={3}
+  />
+  </View>
+  <View style={{alignItems:'center'}}>
+  <FormInput
+   value={''}
+   name={'First'}
+   placeholder={'First'}
+   style={styles.input}
+   keyboardType="numeric"
+   maxLength={3}
+  />
+  </View>
+  </View>
+  
+</View>
+<View style={{flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
+  <View><Text>Poor Pressing</Text></View>
+  <View style={{flexDirection:'row'}}>
+  <View style={{alignItems:'center'}}>
+  <FormInput
+   value={'45'}
+   name={'First'}
+   placeholder={'First'}
+   style={styles.input}
+   keyboardType="numeric"
+   maxLength={3}
+  />
+  </View>
+  <View style={{alignItems:'center'}}>
+  <FormInput
+   value={''}
+   name={'First'}
+   placeholder={'First'}
+   style={styles.input}
+   keyboardType="numeric"
+   maxLength={3}
+  />
+  </View>
+  <View style={{alignItems:'center'}}>
+  <FormInput
+   value={''}
+   name={'First'}
+   placeholder={'First'}
+   style={styles.input}
+   keyboardType="numeric"
+   maxLength={3}
+  />
+  </View>
+  </View>
+  
 </View>
 </View>
+
 
 {/* <Divider 
   orientation="horizontal" 
@@ -675,5 +995,11 @@ const styles = StyleSheet.create({
       borderWidth:1,
       alignItems:'center'
     },
-  
+    inputTools:{
+      height:40,
+      paddingHorizontal:8,
+      borderColor:'gray',
+      borderWidth:1,
+      // alignItems:'center'
+    }
 })

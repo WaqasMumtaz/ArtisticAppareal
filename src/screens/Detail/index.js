@@ -16,6 +16,9 @@ import {
     FlatList
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { FAB } from 'react-native-elements';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 
 const Detail_Page=()=>{
     const [formNull , setFormNull] = useState(false);
@@ -76,7 +79,7 @@ const Item = ({ item }) => (
   );
 
  return(
-     <View>
+     <View style={{justifyContent:'space-between', flex:1}}>
        {formNull == true ? 
        <View style={styles.notFound}>
            <Text style={styles.noFoundTitle}>No Data Found....</Text>
@@ -90,6 +93,20 @@ const Item = ({ item }) => (
        keyExtractor={item => item.key}
        />
      }
+     {formNull != true && (
+     <View style={{margin:28, flexDirection:"row", justifyContent:"space-between"}}>
+         {/* <FAB title="WORD" placement="left" color='#808080'/>
+         <FAB title="PDF" placement="right" color='#808080'/> */}
+         <TouchableOpacity style={styles.btn_container}>
+             <Icon name="file-word-o" size={18} color="white"/>
+             <Text style={[styles.btnTxt , {marginLeft:5}]}>WORD</Text>
+         </TouchableOpacity>
+         <TouchableOpacity style={styles.btn_container}>
+             <Icon name="file-pdf-o" size={18} color="white"/>
+              <Text style={[styles.btnTxt , {marginLeft:5}]}>PDF</Text>
+         </TouchableOpacity>
+     </View>
+     )}
      </View>
  )
 }
@@ -113,5 +130,25 @@ const styles = StyleSheet.create({
       margin:10,
       borderRadius:7,
       padding:5
+  },
+  btn_container:{
+     flexDirection:'row',
+     width: 85,  
+     height: 45,   
+    borderRadius: 30,            
+    backgroundColor: '#808080',  
+    alignItems:'center',
+    justifyContent:'center',
+    padding:5,
+    shadowColor: '#696969',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.9,
+    shadowRadius: 7,
+    elevation: 5,
+    
+  },
+  btnTxt:{
+      fontWeight:'bold',
+      color:'white'
   }
 })

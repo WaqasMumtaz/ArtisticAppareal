@@ -36,6 +36,7 @@ export default function DropDown({
         items={list}
         placeholder={placeholder}
         containerStyle={{ height:45, margin: 5, marginTop: 1, }}
+        style={{borderColor:'gray',}}
         dropDownMaxHeight={dropDownMaxHeight ? dropDownMaxHeight: 120}
         value={value}
         defaultValue={value}
@@ -43,7 +44,7 @@ export default function DropDown({
         max={5}
         multipleText={multipleText}
         dropDownMaxHeight={150}
-       setValue={valueSet}
+        setValue={valueSet}
        // onChangeValue={(item)=>console.log('item current', item)}
        // disabled={disabled}
         // searchable={searchable === true}
